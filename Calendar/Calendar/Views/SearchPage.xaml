@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calendar.Views.SearchPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="{Binding Title}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="3" Padding="10,30" Background="#1C4E54" >
+                <Label Text="Zadajte meno alebo dátum:" FontSize="50" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Entry Text="{Binding Value, Mode=TwoWay}" FontSize="35" TextColor="White" HorizontalTextAlignment="Center" />
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Hľadaj" Command="{Binding SearchCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="Black" TextColor="White" FontSize="30"></Button>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" Padding="30,64,30,24" Spacing="10">
+                    <Label Text="{Binding Result}" FontSize="50" TextColor="Black" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

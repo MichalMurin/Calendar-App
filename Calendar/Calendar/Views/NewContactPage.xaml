@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calendar.Views.NewContactPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="New Item"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="10,50" BackgroundColor="#1C4E54" >
+            <Label Text="Zadajte meno:" FontSize="50" TextColor="White" HorizontalTextAlignment="Center" />
+            <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="30" HorizontalTextAlignment="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Zrušiť" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" FontSize="20"></Button>
+                <Button Text="Uložiť" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" FontSize="20"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

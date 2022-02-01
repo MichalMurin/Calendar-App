@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calendar.Views.ContactsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Calendar.ViewModels"  
+             xmlns:model="clr-namespace:Calendar.Models"  
+             x:Name="BrowseContactsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Načítaj" Command="{Binding LoadAllContactsCommand}" />
+        <ToolbarItem Text="Pridaj" Command="{Binding AddContactCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <RefreshView x:DataType="local:ContactsViewModel" Command="{Binding LoadContactsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Contacts}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:ContactModel">
+                        <Label Text="{Binding Name}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="20"
+                            TextColor="Black"
+                            TextDecorations="None"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ContactsViewModel}}, Path=ContactTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

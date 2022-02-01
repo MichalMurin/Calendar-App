@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calendar.Views.HomePage"
+             xmlns:vm="clr-namespace:Calendar.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#1C4E54</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Label Text="Dnes má meniny" FontSize="Header" Margin="20,20" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextDecorations="None" TextColor="AliceBlue"/>
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Padding="30,24,30,24" Spacing="10">
+                <Label Text="{Binding TodaysName}" FontSize="60" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
